@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" ng-app="ToDoApp">
+
+<head>
+  <title>Shopping List Check Off</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/bootstrap.min.css">
+  <style>
+    .emptyMessage {
+      font-weight: bold;
+      color: red;
+      font-size: 1.2em;
+    }
+
+    .first {
+      font-weight: bold;
+      color: blue;
+    }
+    li {
+      margin-bottom: 7px;
+      font-size: 1.2em;
+    }
+
+    li>button {
+      margin-left: 6px;
+    }
+
+    button>span {
+      color: green;
+    }
+  </style>
+  <script type="text/javascript" src="angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+    <h1 class="first" ><u>To Do Application</u></h1>
+  </div>
+    <div class="row"></div>
+    <div ng-controller="ToDoController as TDC" class="col-md-6">
+
+      <div>
+        <b>Enter Your Task :</b>
+        <input type="text" placeholder="Enter your task" ng-model="TDC.task">&nbsp;
+        <button ng-click="TDC.add()">Add Task</button>
+      </div>
+      <h2 ng-if="TDC.items.length!=0">To Do:</h2>
+      <ul>
+        <li ng-repeat="item in TDC.items">You need to do {{ item }}
+          <button ng-click="TDC.populate($index);">
+            <span></span> Bought</button>
+        </li>
+      </ul>
+      <div class="emptyMessage" ng-if="TDC.items.length==0">Let's Do Something</div>
+    </div>
+
+
+    <div class="col-md-6" ng-controller="DoneController as ABC">
+      <h2 ng-if="ABC.removedList.length!=0">Done:</h2>
+      <ul>
+        <li ng-repeat="item in ABC.removedList">Done with {{item}}</li>
+      </ul>
+      <div class="emptyMessage" ng-if="ABC.removedList.length==0">Nothing Done yet.</div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
