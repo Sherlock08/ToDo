@@ -35,10 +35,10 @@
 
 <body>
   <div class="container">
-    <div>
+    <div class="container">
     <h1 class="first" ><u>To Do Application</u></h1>
   </div>
-    <div class="row"></div>
+    <div class="container">
     <div ng-controller="ToDoController as TDC" class="col-md-6">
 
       <div>
@@ -50,7 +50,7 @@
       <ul>
         <li ng-repeat="item in TDC.items">You need to do {{ item }}
           <button ng-click="TDC.populate($index);">
-            <span></span> Bought</button>
+            <span></span> Done </button>
         </li>
       </ul>
       <div class="emptyMessage" ng-if="TDC.items.length==0">Let's Do Something</div>
@@ -58,11 +58,13 @@
 
 
     <div class="col-md-6" ng-controller="DoneController as ABC">
-      <h2 ng-if="ABC.removedList.length!=0">Done:</h2>
+
+<br>      <h2 ng-if="ABC.removedList.length!=0">Done:</h2>
       <ul>
         <li ng-repeat="item in ABC.removedList">Done with {{item}}</li>
       </ul>
       <div class="emptyMessage" ng-if="ABC.removedList.length==0">Nothing Done yet.</div>
+    </div>
     </div>
   </div>
 
